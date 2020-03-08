@@ -1,0 +1,18 @@
+h1 {
+  /* font-family: 'Noto Sans JP', sans-serif; */
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.field {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#form {
+  display: flex;
+  align-items: center;
+  align-content: space-between;
+  flex-direction: column;
+}
