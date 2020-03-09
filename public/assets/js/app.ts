@@ -1,26 +1,28 @@
 (
   document.onreadystatechange = () => {
     if (document.readyState === 'complete') {
-      const binNumer = document.getElementById(
+      const binNumber = document.getElementById(
           'binnum') as HTMLInputElement;
       const decNumber = document.getElementById(
           'decnum') as HTMLInputElement;
       const convertButton = document.getElementById(
           'convert') as HTMLButtonElement;
+      // eslint-disable-next-line no-unused-vars
       const MODEL = {
-        len: binNumer.value.length,
-        decNum: 0,
+        // no data to change or upadte the data
       };
       const VIEW = {
         render: () => {
         },
         init: () => {
           convertButton.onclick = () => {
-            for (let i = 0; i < MODEL.len; i += 1) {
-              if (binNumer[i] === '0' || binNumer[i] === '1') {
-                CONTROLLER.bin2dec();
+            const length = binNumber.value.length;
+            for (let i = 0; i < length; i += 1) {
+              if (!(binNumber.value[i] === '0' || binNumber.value[i] === '1')) {
+                decNumber.value = `Not A Valid Binary Number`;
               } else {
-                alert('Not a valid Binary Number');
+                const decNum = CONTROLLER.bin2dec(binNumber.value);
+                decNumber.value = `${decNum}`;
               }
             }
           };
@@ -28,12 +30,13 @@
         },
       };
       const CONTROLLER = {
-        bin2dec: () => {
-          const length = MODEL.len;
-          for (let i = length - 1; i >= 0; i -= 1) {
-            MODEL.decNum += Number(binNumer[i])*Math.pow(2, Number(length-1-i));
+        bin2dec: (num) => {
+          let finalDecNum = 0;
+          const length = binNumber.value.length;
+          for (let i = length-1; i >= 0; i -=1) {
+            finalDecNum += Number(binNumber.value[i]) * Math.pow(2, length-1-i);
           }
-          decNumber.innerHTML = `MODEL.decNum`;
+          return finalDecNum;
         },
         init: () => {
           VIEW.init();

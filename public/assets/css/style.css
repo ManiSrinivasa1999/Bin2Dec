@@ -1,18 +1,24 @@
+nav {
+  justify-content: center;
+}
+
 h1 {
-  /* font-family: 'Noto Sans JP', sans-serif; */
   font-family: 'Ubuntu', sans-serif;
+}
+
+h2 {
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .field {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-#form {
-  display: flex;
-  align-items: center;
-  align-content: space-between;
-  flex-direction: column;
 }
